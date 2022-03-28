@@ -56,12 +56,15 @@ namespace BookStoreAPI
 
                 setup.AddSecurityRequirement(new OpenApiSecurityRequirement { { jwtSecurityScheme, Array.Empty<string>() } });
             });
-            services.AddTransient<ICartBL, CartBL>();
-            services.AddTransient<ICartRL, CartRL>();
+            
             services.AddTransient<IUserBL, UserBL>();
             services.AddTransient<IUserRL, UserRL>();
             services.AddTransient<IBookBL, BookBL>();
             services.AddTransient<IBookRL, BookRL>();
+            services.AddTransient<ICartBL, CartBL>();
+            services.AddTransient<ICartRL, CartRL>();
+            services.AddTransient<IWishListBL, WishListBL>();
+            services.AddTransient<IWishListRL, WishListRL>();
             services.AddDataProtection();
             services.AddAuthentication(x =>
             {
