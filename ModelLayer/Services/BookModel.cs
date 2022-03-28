@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace ModelLayer.Services.BookModel
+namespace ModelLayer.Services
 {
-   public class BookModel
-   {
+    public class BookModel
+    {
 
 
         public int BookId { get; set; }
@@ -28,5 +28,5 @@ namespace ModelLayer.Services.BookModel
         public int ReviewCount { get; set; }
         [Required]
         public int BookCount { get; set; }
-   }
+    }
 }

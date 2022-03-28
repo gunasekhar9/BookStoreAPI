@@ -1,38 +1,25 @@
 ﻿using ModelLayer.Services;
 using RepositoryLayer;
+using RepositoryLayer.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BusinessLayer.Services
 {
-    public class BookBL: IBookBL
+    public class CartBL : ICartBL
     {
-        IBookRL bookRL;
-
-        public BookBL(IBookRL bookRL)
+        ICartRL cartRL;
+        public CartBL(ICartRL cartRL)
         {
-            this.bookRL = bookRL;
+            this.cartRL = cartRL;
         }
 
-        public void addBook(BookModel bookModel)
+        public string AddBookToCart(CartModel cartModel)
         {
             try
             {
-                this.bookRL.addBook(bookModel);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-        }
-
-        public List<BookModel> GetAllBookModels()
-        {
-            try
-            {
-               return this.bookRL.GetAllBookModels();
+                return this.cartRL.AddBookToCart(cartModel);
             }
             catch (Exception e)
             {
@@ -40,22 +27,11 @@ namespace BusinessLayer.Services
             }
         }
 
-        public BookModel GetBookModel(int? id)
+        public string DeleteCart(int CartId)
         {
             try
             {
-                return this.bookRL.GetBookModel(id);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        public void deleteBook(BookModel bookModel)
-        {
-            try
-            {
-                this.bookRL.deleteBook(bookModel);
+                return this.cartRL.DeleteCart(CartId);
             }
             catch (Exception e)
             {
@@ -63,11 +39,23 @@ namespace BusinessLayer.Services
             }
         }
 
-        public void updateBook(BookModel bookModel)
+        public List<GetCartModel> GetCartData(int Id)
         {
             try
             {
-                bookRL.updateBook(bookModel);
+                return this.cartRL.GetCartData(Id);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public string UpdateCart(int CartId, int OrderQuantity)
+        {
+            try
+            {
+                return this.cartRL.UpdateCart(CartId, OrderQuantity);
             }
             catch (Exception e)
             {
